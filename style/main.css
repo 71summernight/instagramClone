@@ -274,10 +274,13 @@ article {
   padding: 0px 23px;
 }
 
-.delete-btn {
+.delete-btn,
+.heart {
+  justify-content: right;
   background-color: #fafafa;
   border: 0;
-  justify-content: right;
+  margin: 0;
+  padding: 0;
 }
 
 .delete-btn:hover {

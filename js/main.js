@@ -12,13 +12,12 @@ function onAdd() {
   const userId = document.querySelector(".owner-id").innerText;
   //2. 새로운 아이템 만듬(+삭제)
   //3. comment안에 새로만든 아이템을 추가한다.
-
   const commentRow = createComment(userId, text);
   commentRow.scrollIntoView({ block: "center" });
   comments.appendChild(commentRow);
 
   //4. 인풋을 초기화한다.
-  commentInput.value = " ";
+  commentInput.value = "";
   commentInput.focus();
 }
 
@@ -35,8 +34,11 @@ function createComment(userId, text) {
         </div>
 
         <div class="commnetRight" >
+            <button class="heart">
+            <i class="far fa-heart"></i>
+            </button>
              <button class="delete-btn">
-                <i class="fas fa-trash-alt" data-id=${id}></i>
+             <i class="fas fa-times" data-id=${id}></i>
             </button>
         </div>
         `;
@@ -52,7 +54,7 @@ commentInput.addEventListener("keypress", (event) => {
 
 comments.addEventListener("click", (event) => {
   const id = event.target.dataset.id;
-  if (id) {
+  if (id && event.target.nodeName === "I") {
     const toBeDeleted = document.querySelector(`.contents[data-id="${id}"]`);
     toBeDeleted.remove();
   }
